@@ -1,0 +1,6 @@
+@import "./bootstrap.scss";
+
+button {
+  @extend .btn;
+  @extend .btn-secondary;
+}
