@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "npm-run-all build:css",
-    "build:css": "esbuild css/webrequret-ui.css --bundle --minify --outdir=dist/css",
-    "build:js": "esbuild js/webrequret-ui.js --bundle --minify --outdir=dist/js",
+    "build:css": "esbuild css/webrequest-ui.css --bundle --minify --outdir=dist/css",
+    "build:js": "esbuild js/webrequest-ui.js --bundle --minify --outdir=dist/js",
     "watch": "npm-run-all watch:css",
     "watch:css": "esbuild css/webrequret-ui.css --bundle --watch --outdir=dist/css",
     "test": "echo \"Error: no test specified\" && exit 1"

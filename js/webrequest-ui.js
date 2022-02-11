@@ -6,4 +6,4 @@
 //<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
 //<script src="//cdn.jsdelivr.net/npm/shepherd.js@8.3.1/dist/js/shepherd.min.js"></script>
 
-import "../node_modules/"
+import "../node_modules/highlight.js/lib/core"
