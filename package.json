@@ -1,8 +1,7 @@
 {
   "name": "webrequest-ui",
-  "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.1",
+  "description": "Webrequest UI to build awesome no-code tools",
   "scripts": {
     "build": "npm-run-all build:css",
     "build:css": "esbuild  --bundle --minify --outdir=dist/css",
