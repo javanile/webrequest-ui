@@ -7,3 +7,5 @@
 //<script src="//cdn.jsdelivr.net/npm/shepherd.js@8.3.1/dist/js/shepherd.min.js"></script>
 
 import "../node_modules/highlight.js/lib/core"
+import "./webrequest-form"
+

@@ -8,7 +8,8 @@
     "build:sass": "sass css/webrequest-ui.scss dist/css/webrequest-ui.css",
     "build:js": "esbuild js/webrequest-ui.js --bundle --minify --outdir=dist/js",
     "watch": "npm-run-all watch:css",
-    "watch:css": "esbuild css/webrequret-ui.css --bundle --watch --outdir=dist/css",
+    "watch:css": "esbuild css/webrequest-ui.css --bundle --watch --outdir=dist/css",
+    "watch:js": "esbuild js/webrequest-ui.js --bundle --watch --outdir=dist/js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "cp node_modules/bootswatch/dist/yeti/bootstrap.css css/bootstrap.scss"
   },
