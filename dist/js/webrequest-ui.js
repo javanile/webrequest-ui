@@ -1421,22 +1421,21 @@
 
   // js/webrequest-form.js
   var forms = document.querySelectorAll("form[webrequest]");
+  var isHtml = (input) => /<[a-z]+\d?(\s+[\w-]+=("[^"]*"|'[^']*'))*\s*\/?>|&#?\w+;/i.test(input);
   forms.forEach((form) => {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      console.log("AAAAA");
-      let url = form.getAttribute("action");
-      if (!url) {
-        url = document.location.origin + document.location.pathname;
+      const url = form.getAttribute("action") || document.location.origin + document.location.pathname;
+      let output = document.getElementById(form.getAttribute("webrequest"));
+      if (!output) {
+        output = document.createElement("div");
+        form.appendChild(output);
       }
-      console.log("ACTION:", url);
       fetch(url, {
         method: "POST",
         mode: "no-cors"
       }).then((response) => {
-        document.getElementById("webrequest-result-panel").style.display = "block";
-        document.getElementById("webrequest-submit-label").style.display = "inline";
-        document.getElementById("webrequest-submit-spinner").style.display = "none";
+        output.parentElement.style.display = "block";
         if (response.headers.get("content-type").startsWith("image/")) {
           return response.blob().then((blob) => {
             let reader = new FileReader();
@@ -1454,7 +1453,7 @@
               document.getElementById("webrequest-result-output").innerHTML = '<div class="form-control html-output" id="webrequest-result"></div>';
               document.getElementById("webrequest-result").innerHTML = text;
             } else {
-              document.getElementById("webrequest-result-output").innerHTML = '<textarea class="form-control text-output" id="webrequest-result" rows="4" readonly></textarea>';
+              output.innerHTML = '<textarea class="form-control text-output" id="webrequest-result" rows="4" readonly></textarea>';
               document.getElementById("webrequest-result").value = text;
             }
           });
@@ -1463,3 +1462,4 @@
     }, false);
   });
 })();
+//# sourceMappingURL=webrequest-ui.js.map
