@@ -1426,9 +1426,11 @@
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const url = form.getAttribute("action") || document.location.origin + document.location.pathname;
-      let output = document.getElementById(form.getAttribute("webrequest"));
+      const outputId = form.getAttribute("webrequest") || "webrequest-output";
+      let output = document.getElementById(outputId);
       if (!output) {
         output = document.createElement("div");
+        output.setAttribute("id", outputId);
         form.appendChild(output);
       }
       fetch(url, {
@@ -1450,11 +1452,11 @@
         } else {
           return response.text().then((text) => {
             if (isHtml(text)) {
-              document.getElementById("webrequest-result-output").innerHTML = '<div class="form-control html-output" id="webrequest-result"></div>';
-              document.getElementById("webrequest-result").innerHTML = text;
+              output.innerHTML = '<div class="form-control html-output" id="' + outputId + '-html"></div>';
+              document.getElementById(outputId + "-html").innerHTML = text;
             } else {
-              output.innerHTML = '<textarea class="form-control text-output" id="webrequest-result" rows="4" readonly></textarea>';
-              document.getElementById("webrequest-result").value = text;
+              output.innerHTML = '<textarea class="form-control text-output" id="' + outputId + '-textarea" rows="4" readonly></textarea>';
+              document.getElementById(outputId + "-textarea").value = text;
             }
           });
         }
