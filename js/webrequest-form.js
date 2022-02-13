@@ -24,10 +24,10 @@ forms.forEach(form => {
                 return response.blob().then(blob => {
                     let reader = new FileReader();
                     reader.onload = () => {
-                        document.getElementById('webrequest-result-output').innerHTML = '<div class="form-control image-output" id="webrequest-result"></div>';
+                        output.innerHTML = '<div class="form-control image-output" id="'+outputId+'-image"></div>';
                         let img = document.createElement('img');
                         img.src = reader.result;
-                        document.getElementById('webrequest-result').appendChild(img);
+                        document.getElementById(outputId+'-image').appendChild(img);
                     };
                     reader.readAsDataURL(blob);
                 });
