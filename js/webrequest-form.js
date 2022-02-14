@@ -46,8 +46,8 @@ forms.forEach(form => {
                         output.innerHTML = '<div class="form-control html-output" id="'+outputId+'-html"></div>';
                         document.getElementById(outputId+'-html').innerHTML = text;
                     } else {
-                        output.innerHTML = '<textarea class="form-control text-output" id="'+outputId+'-textarea" rows="4" readonly></textarea>';
-                        document.getElementById(outputId+'-textarea').value = text;
+                        output.innerHTML = '<textarea class="form-control text-output" id="'+outputId+'-text" rows="4" readonly></textarea>';
+                        document.getElementById(outputId+'-text').value = text;
                     }
                 });
             }
