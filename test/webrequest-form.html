@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<div x-data="{ count: 0 }">
+    <button x-on:click="count++">Increment</button>
+
+    <span x-text="count"></span>
+</div>
+
 <form webrequest="output1" action="fixtures/fake-response.json">
     <input type="submit" value="Submit" />
     <div id="output1"></div>
@@ -21,6 +27,13 @@
 <form webrequest="output3" action="fixtures/fake-response.jpeg">
     <input type="submit" value="Submit" />
     <div id="output3"></div>
+</form>
+
+<form x-data="{ value1: 'value1' }" webrequest="output4" action="https://webrequest.cc/php-nocode/kit/debug">
+    <input type="text" x-model="value1">
+    <input type="text" x-bind:name="value1" value="value1">
+    <input type="submit" value="Submit" />
+    <div id="output4"></div>
 </form>
 
 <script src="../dist/js/webrequest-ui.js"></script>

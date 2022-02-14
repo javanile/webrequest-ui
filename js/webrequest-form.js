@@ -7,6 +7,10 @@ forms.forEach(form => {
         event.preventDefault();
         const url = form.getAttribute('action') || document.location.origin + document.location.pathname;
         const outputId = form.getAttribute('webrequest') || 'webrequest-output';
+        const body = new URLSearchParams();
+        for (const pair of new FormData(form)) {
+            body.append(pair[0], pair[1]+"");
+        }
         let output = document.getElementById(outputId)
         if (!output) {
             output = document.createElement('div');
@@ -14,13 +18,18 @@ forms.forEach(form => {
             form.appendChild(output);
         }
         fetch(url, {
+            /*headers: [
+                ['Content-Type', 'text/plain'],
+            ],*/
             method: 'POST',
-            mode: 'no-cors',
+            body: body
+            /*mode: 'no-cors',*/
         }).then(response => {
             output.parentElement.style.display = 'block';
             //document.getElementById('webrequest-submit-label').style.display = 'inline';
             //document.getElementById('webrequest-submit-spinner').style.display = 'none';
-            if (response.headers.get("content-type").startsWith('image/')) {
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.startsWith('image/')) {
                 return response.blob().then(blob => {
                     let reader = new FileReader();
                     reader.onload = () => {
