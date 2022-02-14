@@ -4181,8 +4181,13 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       const url = form.getAttribute("action") || document.location.origin + document.location.pathname;
       const outputId = form.getAttribute("webrequest") || "webrequest-output";
       const body = new URLSearchParams();
+      const headers = {};
       for (const pair of new FormData(form)) {
-        body.append(pair[0], pair[1] + "");
+        if (pair[0] != "Authorization") {
+          body.append(pair[0], pair[1] + "");
+        } else {
+          headers[pair[0]] = pair[1] + "";
+        }
       }
       let output = document.getElementById(outputId);
       if (!output) {
@@ -4191,8 +4196,10 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         form.appendChild(output);
       }
       fetch(url, {
+        headers,
         method: "POST",
-        body
+        body,
+        mode: "cors"
       }).then((response) => {
         output.parentElement.style.display = "block";
         const contentType = response.headers.get("content-type");
@@ -4213,8 +4220,8 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
               output.innerHTML = '<div class="form-control html-output" id="' + outputId + '-html"></div>';
               document.getElementById(outputId + "-html").innerHTML = text;
             } else {
-              output.innerHTML = '<textarea class="form-control text-output" id="' + outputId + '-textarea" rows="4" readonly></textarea>';
-              document.getElementById(outputId + "-textarea").value = text;
+              output.innerHTML = '<textarea class="form-control text-output" id="' + outputId + '-text" rows="4" readonly></textarea>';
+              document.getElementById(outputId + "-text").value = text;
             }
           });
         }

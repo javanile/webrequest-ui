@@ -8,8 +8,13 @@ forms.forEach(form => {
         const url = form.getAttribute('action') || document.location.origin + document.location.pathname;
         const outputId = form.getAttribute('webrequest') || 'webrequest-output';
         const body = new URLSearchParams();
+        const headers = {};
         for (const pair of new FormData(form)) {
-            body.append(pair[0], pair[1]+"");
+            if (pair[0] != 'Authorization') {
+                body.append(pair[0], pair[1]+"");
+            } else {
+                headers[pair[0]] = pair[1]+"";
+            }
         }
         let output = document.getElementById(outputId)
         if (!output) {
@@ -18,12 +23,10 @@ forms.forEach(form => {
             form.appendChild(output);
         }
         fetch(url, {
-            /*headers: [
-                ['Content-Type', 'text/plain'],
-            ],*/
+            headers: headers,
             method: 'POST',
-            body: body
-            /*mode: 'no-cors',*/
+            body: body,
+            mode: 'cors',
         }).then(response => {
             output.parentElement.style.display = 'block';
             //document.getElementById('webrequest-submit-label').style.display = 'inline';
