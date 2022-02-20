@@ -10,6 +10,7 @@ publish:
 	@npm unpublish webrequest-ui@$$(npm pkg get version | cut -d'"' -f2)
 	@npm version patch
 	@npm publish
+	@git push
 
 ## ======
 ## Docker
