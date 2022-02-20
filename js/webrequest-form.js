@@ -36,7 +36,7 @@ forms.forEach(form => {
                 return response.blob().then(blob => {
                     let reader = new FileReader();
                     reader.onload = () => {
-                        output.innerHTML = '<div class="form-control image-output" id="'+outputId+'-image"></div>';
+                        output.innerHTML = '<div class="output-image" id="'+outputId+'-image"></div>';
                         let img = document.createElement('img');
                         img.src = reader.result;
                         document.getElementById(outputId+'-image').appendChild(img);
@@ -46,10 +46,10 @@ forms.forEach(form => {
             } else {
                 return response.text().then(text => {
                     if (isHtml(text)) {
-                        output.innerHTML = '<div class="form-control html-output" id="'+outputId+'-html"></div>';
+                        output.innerHTML = '<div class="output-html" id="'+outputId+'-html"></div>';
                         document.getElementById(outputId+'-html').innerHTML = text;
                     } else {
-                        output.innerHTML = '<textarea class="form-control text-output" id="'+outputId+'-text" rows="4" readonly></textarea>';
+                        output.innerHTML = '<textarea class="output-text" id="'+outputId+'-text" rows="4" readonly></textarea>';
                         document.getElementById(outputId+'-text').value = text;
                     }
                 });
