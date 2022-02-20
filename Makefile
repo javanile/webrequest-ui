@@ -5,6 +5,10 @@
 ## ===
 
 publish:
+	@git add .
+	@git commit -am "Commit before publish"
+	@npm unpublish webrequest-ui@0.1.2
+	@npm version patch
 	@npm publish
 
 ## ======
