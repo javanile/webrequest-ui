@@ -11633,25 +11633,25 @@ body.fade-in {
   color: #273C2C;
 }
 
-.html-output {
+.output-html {
   font-size: 70%;
   background: #00FFFF;
   overflow-y: scroll;
   min-height: 120px;
 }
 
-.text-output {
+.output-text {
   font-weight: bold;
 }
 
-.image-output {
+.output-image {
   text-align: center;
   background: #555;
   overflow-y: scroll;
   min-height: 120px;
 }
 
-.image-output img {
+.output-image img {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.16), 0 8px 8px rgba(0, 0, 0, 0.2);
 }
 
