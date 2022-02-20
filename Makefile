@@ -7,7 +7,7 @@
 publish:
 	@git add .
 	@git commit -am "Commit before publish"
-	@npm unpublish webrequest-ui@0.1.3
+	@npm unpublish webrequest-ui@$$(npm pkg get version)
 	@npm version patch
 	@npm publish
 
