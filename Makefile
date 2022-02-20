@@ -7,8 +7,7 @@
 publish:
 	@git add .
 	@git commit -am "Commit before publish"
-	@npm unpublish webrequest-ui@0.1.3
-	@npm version patch
+	@npm unpublish webrequest-ui@0.1.4
 	@npm publish
 
 ## ======
