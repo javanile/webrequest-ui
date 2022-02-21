@@ -3,7 +3,7 @@
   "version": "0.1.9",
   "description": "Webrequest UI to build awesome no-code tools",
   "scripts": {
-    "build": "npm-run-all build:css",
+    "build": "npm-run-all build:css build:js",
     "build:css": "sass css/webrequest-ui.scss dist/css/webrequest-ui.css",
     "build:js": "esbuild js/webrequest-ui.js --bundle --minify --outdir=dist/js",
     "watch": "npm-run-all watch:css",

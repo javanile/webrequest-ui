@@ -4,6 +4,9 @@
 ## NPM
 ## ===
 
+build:
+	@npm run build
+
 publish:
 	@git add .
 	@git commit -am "Commit before publish" || true
