@@ -5,7 +5,8 @@ const isHtml = input => /<[a-z]+\d?(\s+[\w-]+=("[^"]*"|'[^']*'))*\s*\/?>|&#?\w+;
 forms.forEach(form => {
     form.addEventListener('submit', event => {
         event.preventDefault();
-        const url = form.getAttribute('action') || document.location.origin + document.location.pathname;
+        const url = form.getAttribute('action') || document.location.origin;
+        //const url = form.getAttribute('action') || document.location.origin + document.location.pathname;
         const outputId = form.getAttribute('webrequest') || 'webrequest-output';
         const body = new URLSearchParams();
         const headers = {};
