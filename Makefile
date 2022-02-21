@@ -6,13 +6,10 @@
 
 publish:
 	@git add .
-	@git commit -am "Publish" || true
+	@git commit -am "Commit before publish" || true
 	@npm unpublish -f webrequest-ui@$$(npm pkg get version | cut -d'"' -f2) || true
 	@npm version patch
 	@npm publish
-	@git add .
-	@git commit -am "Publish" || true
-	@git push
 
 ## ======
 ## Docker
