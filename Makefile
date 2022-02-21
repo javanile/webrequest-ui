@@ -6,10 +6,12 @@
 
 publish:
 	@git add .
-	@git commit -am "Commit before publish"
-	@npm unpublish webrequest-ui@$$(npm pkg get version | cut -d'"' -f2) || true
+	@git commit -am "Publish" || true
+	@npm unpublish -f webrequest-ui@$$(npm pkg get version | cut -d'"' -f2) || true
 	@npm version patch
 	@npm publish
+	@git add .
+	@git commit -am "Publish" || true
 	@git push
 
 ## ======
