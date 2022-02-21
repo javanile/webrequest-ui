@@ -5,6 +5,7 @@
 ## ===
 
 publish:
+	echo $$(npm pkg get version | cut -d'"' -f2)
 	@git add .
 	@git commit -am "Commit before publish"
 	@npm unpublish webrequest-ui@$$(npm pkg get version | cut -d'"' -f2)
