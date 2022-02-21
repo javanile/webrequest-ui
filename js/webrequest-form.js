@@ -9,7 +9,8 @@ forms.forEach(form => {
         const outputId = form.getAttribute('webrequest') || 'webrequest-output';
         const body = new URLSearchParams();
         const headers = {};
-        for (const pair of new FormData(form)) {
+        const formData = new FormData(form);
+        for (const pair of formData) {
             if (pair[0] != 'Authorization') {
                 body.append(pair[0], pair[1]+"");
             } else {
@@ -22,7 +23,7 @@ forms.forEach(form => {
             output.setAttribute('id', outputId);
             form.appendChild(output);
         }
-        console.log("POST", url, body);
+        console.log("POST", url, formData);
         fetch(url, {
             headers: headers,
             method: 'POST',
