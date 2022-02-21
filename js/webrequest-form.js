@@ -22,6 +22,7 @@ forms.forEach(form => {
             output.setAttribute('id', outputId);
             form.appendChild(output);
         }
+        console.log("POST", url, body);
         fetch(url, {
             headers: headers,
             method: 'POST',
