@@ -1,6 +1,6 @@
 {
   "name": "webrequest-ui",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Webrequest UI to build awesome no-code tools",
   "scripts": {
     "build": "npm-run-all build:css",
