@@ -17,12 +17,12 @@ publish:
 ## ======
 
 stop:
-	@docker stop $$(docker ps | grep ":8080" | cut -c1-12)
+	@docker stop $$(docker ps | grep ":8080" | cut -c1-12) || true
 
 ## ====
 ## Test
 ## ====
 
-test-form:
+test-form: stop
 	@docker run --rm -it -d -p 8080:80 -v $$PWD:/usr/local/apache2/htdocs httpd:alpine > /dev/null
 	@echo "Visit http://localhost:8080/test/webrequest-form.html to upgrade core form"
