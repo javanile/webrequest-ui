@@ -6,7 +6,7 @@
 
 push: build
 	@git add .
-	@git commit -am "New release" && true
+	@git commit -am "New release" || true
 	@git push
 
 ## ===
