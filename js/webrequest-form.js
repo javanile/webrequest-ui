@@ -39,7 +39,7 @@ forms.forEach(form => {
                 return response.blob().then(blob => {
                     let reader = new FileReader();
                     reader.onload = () => {
-                        output.innerHTML = '<div class="output-image d-flex flex-grow-1 flex-column" id="'+outputId+'-image"></div>';
+                        output.innerHTML = '<div class="output-image d-flex flex-grow-1 flex-column"><div id="'+outputId+'-image"></div></div>';
                         let img = document.createElement('img');
                         img.src = reader.result;
                         document.getElementById(outputId+'-image').appendChild(img);
@@ -49,7 +49,7 @@ forms.forEach(form => {
             } else {
                 return response.text().then(text => {
                     if (isHtml(text)) {
-                        output.innerHTML = '<div class="output-html d-flex flex-grow-1 flex-column" id="'+outputId+'-html"></div>';
+                        output.innerHTML = '<div class="output-html form-control d-flex flex-grow-1 flex-column" id="'+outputId+'-html"></div>';
                         document.getElementById(outputId+'-html').innerHTML = text;
                     } else {
                         output.innerHTML = '<textarea class="output-text form-control d-flex flex-grow-1 flex-column" id="'+outputId+'-text" rows="4" readonly></textarea>';

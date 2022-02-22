@@ -11653,10 +11653,19 @@ body.fade-in {
 }
 
 .output-image {
+  position: relative;
+  padding: 8px;
   text-align: center;
   background: #555;
-  overflow-y: scroll;
   min-height: 120px;
+  overflow-y: scroll;
+}
+
+.output-image div {
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
 }
 
 .output-image img {
