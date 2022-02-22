@@ -16,6 +16,9 @@ push: build
 build:
 	@npm run build
 
+watch:
+	@npm run watch
+
 publish:
 	@git add .
 	@git commit -am "Commit before publish" || true
@@ -28,7 +31,16 @@ publish:
 ## ======
 
 stop:
-	@docker stop $$(docker ps | grep ":8080" | cut -c1-12) || true
+	@docker stop $$(docker ps | grep ":8080" | cut -c1-12) > /dev/null 2>&1 || true
+
+## =======
+## Develop
+## =======
+
+dev-test: stop
+	@docker run --rm -it -d -p 8080:80 -v $$PWD:/usr/local/apache2/htdocs httpd:alpine > /dev/null
+	@echo "Visit http://localhost:8080/test/webrequest-test.html to upgrade core form"
+
 
 ## ====
 ## Test

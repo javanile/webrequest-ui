@@ -11572,6 +11572,13 @@ body {
   color: #555;
 }
 
+body {
+  /*  expand body to fill page heigth  */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 body.fade-in {
   opacity: 0;
   transition: opacity 1s;
@@ -11634,6 +11641,7 @@ body.fade-in {
 }
 
 .output-html {
+  padding: 8px;
   font-size: 70%;
   background: #00FFFF;
   overflow-y: scroll;
@@ -11671,6 +11679,12 @@ body.fade-in {
   border-right: 1px solid #CCC;
   vertical-align: top;
   padding-right: 5px !important;
+}
+
+.dashed-box {
+  margin: 3px;
+  padding: 3px;
+  border: 1px dashed #cccccc;
 }
 
 .hljs-ln-code {
