@@ -7,6 +7,7 @@ forms.forEach(form => {
         event.preventDefault();
         const submitterText = event.submitter.innerHTML;
         const submitterWidth = event.submitter.clientWidth;
+        console.log("TEST!");
         event.submitter.innerHTML = '<span class="spinner-border spinner-border-sm"></span>';
         event.submitter.style.width = submitterWidth+'px';
         const url = form.getAttribute('action') || document.location.origin;
