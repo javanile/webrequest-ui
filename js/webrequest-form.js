@@ -5,6 +5,10 @@ const isHtml = input => /<[a-z]+\d?(\s+[\w-]+=("[^"]*"|'[^']*'))*\s*\/?>|&#?\w+;
 forms.forEach(form => {
     form.addEventListener('submit', event => {
         event.preventDefault();
+        const submitterText = event.submitter.innerHTML;
+        const submitterWidth = event.submitter.clientWidth;
+        event.submitter.innerHTML = '<span class="spinner-border spinner-border-sm"></span>';
+        event.submitter.style.width = submitterWidth+'px';
         const url = form.getAttribute('action') || document.location.origin;
         //const url = form.getAttribute('action') || document.location.origin + document.location.pathname;
         const outputId = form.getAttribute('webrequest') || 'webrequest-output';
@@ -43,6 +47,7 @@ forms.forEach(form => {
                         let img = document.createElement('img');
                         img.src = reader.result;
                         document.getElementById(outputId+'-image').appendChild(img);
+                        event.submitter.innerHTML = submitterText;
                     };
                     reader.readAsDataURL(blob);
                 });
@@ -55,6 +60,7 @@ forms.forEach(form => {
                         output.innerHTML = '<textarea class="output-text form-control d-flex flex-grow-1 flex-column" id="'+outputId+'-text" rows="4" readonly></textarea>';
                         document.getElementById(outputId+'-text').value = text;
                     }
+                    event.submitter.innerHTML = submitterText;
                 });
             }
         });
