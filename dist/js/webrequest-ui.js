@@ -4189,7 +4189,18 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     form.querySelectorAll("button[type=button]").forEach((button) => {
       button.addEventListener("click", (event) => {
         event.preventDefault();
-        file.click();
+        if (window.location.host != "localhost:8080") {
+          const html = '<div class="modal-backdrop"></div><div id="modalWindow" class="modal show fade in"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><a class="close" data-dismiss="modal">\xD7</a><h4>webrequest</h4></div><div class="modal-body"><p>AAA</p></div><div class="modal-footer"><span class="btn" data-dismiss="modal">Close</span></div></div></div></div>';
+          var modal = document.createElement("div");
+          modal.innerHTML = html;
+          document.body.appendChild(modal);
+          document.getElementById("backdrop").style.display = "block";
+          document.getElementById("modalWindow").style.display = "block";
+          document.getElementById("modalWindow").classList.remove("hide");
+          document.getElementById("modalWindow").classList.add("show");
+        } else {
+          file.click();
+        }
       }, false);
     });
     form.appendChild(file);
@@ -4250,7 +4261,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       headers,
       method: "POST",
       body,
-      mode: "no-cors"
+      mode: "cors"
     }).then((response) => {
       const contentType = response.headers.get("content-type");
       if (contentType && contentType.startsWith("image/")) {

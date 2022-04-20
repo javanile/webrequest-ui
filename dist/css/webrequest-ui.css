@@ -17811,4 +17811,17 @@ a.navbar-brand > img {
   margin-top: -4px;
 }
 
+.modal-backdrop {
+  opacity: 0.5 !important;
+  background-color: #008cba !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.modal-content {
+  border: 4px solid #008cba !important;
+}
+
 /*# sourceMappingURL=webrequest-ui.css.map */
