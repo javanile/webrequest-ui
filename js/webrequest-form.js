@@ -3,14 +3,34 @@ const forms = document.querySelectorAll('form[webrequest]');
 const isHtml = input => /<[a-z]+\d?(\s+[\w-]+=("[^"]*"|'[^']*'))*\s*\/?>|&#?\w+;/i.test(input);
 
 forms.forEach(form => {
+    const file = document.createElement('input');
+    file.style.display = 'none';
+    file.setAttribute('type', 'file');
+    file.addEventListener('change', event => {
+        const filePath = file.files[0].name;
+        const inputUrl = form.querySelector('input[type=text]');
+        inputUrl.value = filePath;
+        inputUrl.setAttribute("readonly", true);
+    }, false)
+    form.appendChild(file);
+    document.querySelectorAll('button[type=button]').forEach(button => {
+        button.addEventListener('click', event => {
+            file.click();
+        }, false)
+    });
     form.addEventListener('submit', event => {
         event.preventDefault();
         const submitterText = event.submitter.innerHTML;
         const submitterWidth = event.submitter.clientWidth;
-        console.log("TEST!");
         event.submitter.innerHTML = '<span class="spinner-border spinner-border-sm"></span>';
         event.submitter.style.width = submitterWidth+'px';
-        const url = form.getAttribute('action') || document.location.origin;
+
+        let url = form.getAttribute('action') || document.location.origin;
+
+        if (file.files.length != 0) {
+            url = 'http://localhost:8080/run';
+        }
+
         //const url = form.getAttribute('action') || document.location.origin + document.location.pathname;
         const outputId = form.getAttribute('webrequest') || 'webrequest-output';
         const body = new URLSearchParams();

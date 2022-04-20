@@ -20,22 +20,28 @@ body.fade-in {
     transition: opacity 1s;
     -webkit-transition: opacity 1s; /* Safari */
 }
+
 .navbar-shadow {
     box-shadow: 0 1px 2px 0 #333, 0 2px 6px 2px #CCC;
 }
+
 .card-shadow {
     box-shadow: 0 0px 2px 0 #333;
 }
+
 .card-header {
     font-weight: bold;
     padding: 0.75rem 1.25rem 0.6rem;
 }
+
 .navbar-dark .navbar-nav .nav-link, .text-white-70 {
     color: rgba(255, 255, 255, 0.7) !important;
 }
+
 .table-sm th, .table-sm td {
     padding: 0;
 }
+
 .background-text {
     text-align: center;
     margin: 0;
@@ -51,20 +57,25 @@ body.fade-in {
     font-weight: bold;
     font-size: 20px;
 }
+
 .source-panel {
     /*background-color: #fdf6e3;*/
     /*padding: 0 13px 0 13px;*/
     padding: 0;
 }
+
 #script {
     color: #fdf6e3;
 }
+
 #script.hljs {
     color: #657b83;
 }
+
 .hljs-comment, h1 {
     color: #273C2C;
 }
+
 .output-html {
     padding: 8px;
     font-size: 70%;
@@ -72,9 +83,11 @@ body.fade-in {
     overflow-y: scroll;
     min-height: 120px;
 }
+
 .output-text {
     font-weight: bold;
 }
+
 .output-image {
     position: relative;
     padding: 8px;
@@ -83,15 +96,18 @@ body.fade-in {
     min-height: 120px;
     overflow-y: scroll;
 }
+
 .output-image div {
     position: absolute;
     text-align: center;
     left: 0;
     right: 0;
 }
+
 .output-image img {
     box-shadow: 0 1px 1px rgb(0 0 0 / 8%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 16%), 0 8px 8px rgb(0 0 0 / 20%);
 }
+
 #footer {
     color: #888888;
 }
@@ -109,7 +125,6 @@ body.fade-in {
     border-right: 1px solid #CCC;
     vertical-align: top;
     padding-right: 5px !important;
-
 }
 
 .dashed-box {
