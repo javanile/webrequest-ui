@@ -4250,7 +4250,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       headers,
       method: "POST",
       body,
-      mode: "cors"
+      mode: "no-cors"
     }).then((response) => {
       const contentType = response.headers.get("content-type");
       if (contentType && contentType.startsWith("image/")) {

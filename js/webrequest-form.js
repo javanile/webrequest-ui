@@ -89,7 +89,7 @@ function fetchResult(event, form, file, uiData, phpInput) {
         headers: headers,
         method: 'POST',
         body: body,
-        mode: 'cors',
+        mode: 'no-cors',
     }).then(response => {
         //output.parentElement.style.display = 'block';
         //document.getElementById('webrequest-submit-label').style.display = 'inline';
