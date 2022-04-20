@@ -4205,19 +4205,21 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     reader.readAsText(file);
   }
   function handleFormSubmit(event, form, file) {
-    const submitterText2 = event.submitter.innerHTML;
-    const submitterWidth = event.submitter.clientWidth;
+    let uiData = {
+      submitterText: event.submitter.innerHTML,
+      submitterWidth: event.submitter.clientWidth
+    };
     event.submitter.innerHTML = '<span class="spinner-border spinner-border-sm"></span>';
-    event.submitter.style.width = submitterWidth + "px";
+    event.submitter.style.width = uiData.submitterWidth + "px";
     if (file.files.length != 0) {
       loadFileContent(file, (content) => {
-        fetchResult(event, form, file, content);
+        fetchResult(event, form, file, uiData, content);
       });
     } else {
-      fetchResult(event, form, file);
+      fetchResult(event, form, file, uiData);
     }
   }
-  function fetchResult(event, form, file, phpInput) {
+  function fetchResult(event, form, file, uiData, phpInput) {
     const runLocal = file.files.length != 0;
     let url = form.getAttribute("action") || document.location.origin;
     if (runLocal) {
@@ -4259,7 +4261,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
             let img = document.createElement("img");
             img.src = reader.result;
             document.getElementById(outputId + "-image").appendChild(img);
-            event.submitter.innerHTML = submitterText;
+            event.submitter.innerHTML = uiData.submitterText;
           };
           reader.readAsDataURL(blob);
         });
@@ -4272,9 +4274,11 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
             output.innerHTML = '<textarea class="output-text form-control d-flex flex-grow-1 flex-column" id="' + outputId + '-text" rows="4" readonly></textarea>';
             document.getElementById(outputId + "-text").value = text;
           }
-          event.submitter.innerHTML = submitterText;
+          event.submitter.innerHTML = uiData.submitterText;
         });
       }
+    }).catch(() => {
+      event.submitter.innerHTML = uiData.submitterText;
     });
   }
   function applyFormBehaviour(form) {
